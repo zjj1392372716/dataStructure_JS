@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试栈</title>
+</head>
+<body>
+        测试栈
+    <script src="./stack.js"></script>
+    <script>
+        // 【0】基本使用
+        var stack = new Stack();
+        stack.push('zjj');
+        stack.push('zmf');
+        console.log(stack.length());
+        console.log(stack.pop()); // 弹栈，返回栈顶元素
+        console.log(stack.peek()); // 获取栈顶元素
+        stack.clear(); //清空
+        console.log(stack.pop());
+
+
+        console.log(NumBase(78,2));
+
+        //【1】 进制转换 （转换2-9进制）
+        function NumBase(num, base) {
+            var S = new Stack();
+            while(num > 0) {
+                S.push(num % base);
+                num = Math.floor(num /= base); // 向下取整
+            }
+            var result = "";
+            while(S.length() > 0) {
+                result += S.pop();
+            }
+            return result;
+        }
+        
+        console.log(reverse('1001'));
+
+        // 【2】回文判断
+        function reverse(word1) {
+            var S = new Stack();
+            for(var i = 0; i < word1.length; i++) {
+                S.push(word1[i]);
+            }
+            var word2 = "";
+            while(S.length() > 0) {
+                word2 += S.pop();
+            }
+
+            if(word1 == word2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+
+        console.log(fact(5));
+        // 【3】使用栈模拟一下递归求阶乘
+        function fact(num) {
+            var S = new Stack();
+            while(num > 0) {
+                S.push(num--);
+            }
+            var result = 1;
+            while(S.length() > 0) {
+                result *= S.pop();
+            }
+            return result;
+        }
+</script>
+</body>
+</html>
